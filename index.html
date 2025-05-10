@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Product Page</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <div class="navbar-container">
+    <nav class="navbar">
+      <div class="logo">MyStore</div>
+      <div class="hamburger">
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Shop</a></li>
+        <li><a href="#">About Us</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+
+  <div class="product-page">
+    <!-- Gallery -->
+    <div class="gallery">
+      <div class="thumbnails">
+        <img src="assets/product1.jpg" class="thumb" onclick="updateMainImage(this)" />
+        <img src="assets/product2.jpg" class="thumb" onclick="updateMainImage(this)" />
+        <img src="assets/product3.jpg" class="thumb" onclick="updateMainImage(this)" />
+        <img src="assets/product4.jpg" class="thumb" onclick="updateMainImage(this)" />
+      </div>
+      <div class="main-image">
+        <img id="main-product-image" src="assets/product1.jpg" alt="Main Product Image" />
+      </div>
+    </div>
+
+    <!-- Product Info -->
+    <div class="product-info">
+      <h1>Modern Cotton T-Shirt</h1>
+      <p class="price">$29.99</p>
+      <div class="variants">
+        <label>Choose Size:</label>
+        <select id="size-select">
+          <option value="S">Small</option>
+          <option value="M">Medium</option>
+          <option value="L">Large</option>
+        </select>
+        <button onclick="openSizeChart()">Size Chart</button>
+
+        <br><br>
+        <label>Choose Color:</label>
+        <div class="color-swatches">
+          <div class="swatch" style="background:red;" onclick="selectColor('Red')"></div>
+          <div class="swatch" style="background:blue;" onclick="selectColor('Blue')"></div>
+          <div class="swatch" style="background:green;" onclick="selectColor('Green')"></div>
+        </div>
+        <button onclick="openColorCompare()">Compare Colours</button>
+      </div>
+
+      <br>
+      <button onclick="addToCart()">Add to Cart</button>
+    </div>
+
+    <!-- Pair Well With -->
+    <h2>Pair Well With</h2>
+    <div class="scroll-row">
+      <div class="product-card zoomable" onclick="zoomProduct(this)">
+        <img src="assets/shoe.jpg" />
+        <p>Sneakers</p>
+        <p>$59.99</p>
+      </div>
+      <div class="product-card zoomable" onclick="zoomProduct(this)">
+        <img src="assets/cap.jpg" />
+        <p>Cap</p>
+        <p>$15.00</p>
+      </div>
+      <div class="product-card zoomable" onclick="zoomProduct(this)">
+        <img src="assets/bag.jpg" />
+        <p>Crossbody Bag</p>
+        <p>$34.50</p>
+      </div>
+    </div>
+
+    <!-- Bundle -->
+    <h2>Buy These Together</h2>
+    <div class="bundle">
+      <p>Modern Cotton T-Shirt - $29.99</p>
+      <p>Sneakers - $59.99</p>
+      <p>Cap - $15.00</p>
+      <strong>Total: $104.98</strong><br><br>
+      <button>Add Bundle to Cart</button>
+    </div>
+
+    <!-- Tabs -->
+    <div class="tabs">
+      <button onclick="openTab('description')">Description</button>
+      <button onclick="openTab('product-info')">Product Info</button>
+      <button onclick="openTab('shipping')">Shipping</button>
+    </div>
+    <div id="description" class="tab-content active">
+      <p>This modern cotton t-shirt is made with high-quality fabric, perfect for everyday wear.</p>
+    </div>
+    <div id="product-info" class="tab-content">
+      <p>Material: 100% Cotton<br>Fit: Regular<br>Machine washable</p>
+    </div>
+    <div id="shipping" class="tab-content">
+      <p>Free shipping on orders over $50. Delivered within 3–5 business days.</p>
+    </div>
+
+    <!-- Related Products -->
+    <h2>Related Products</h2>
+    <div class="related-products">
+      <div class="grid">
+        <div class="product-card zoomable" onclick="zoomProduct(this)">
+          <img src="assets/vneck.jpg" />
+          <p>V-Neck Tee</p>
+          <p>$25.00</p>
+          <span class="badge">New</span>
+        </div>
+        <div class="product-card zoomable" onclick="zoomProduct(this)">
+          <img src="assets/hoodie.jpg" />
+          <p>Hoodie</p>
+          <p>$45.00</p>
+        </div>
+        <div class="product-card zoomable" onclick="zoomProduct(this)">
+          <img src="assets/slimjean.jpg" />
+          <p>Slim Fit Jeans</p>
+          <p>$40.00</p>
+          <span class="badge">Popular</span>
+        </div>
+        <div class="product-card zoomable" onclick="zoomProduct(this)">
+          <img src="assets/shorts.jpg" />
+          <p>Casual Shorts</p>
+          <p>$30.00</p>
+        </div>
+        <div class="product-card zoomable" onclick="zoomProduct(this)">
+            <img src="assets/watch.jpg" />
+            <p>Watch</p>
+            <p>$28.00</p>
+        </div>
+        <div class="product-card zoomable" onclick="zoomProduct(this)">
+            <img src="assets/bracelet.jpg" />
+            <p>Bracelet</p>
+            <p>$18.50</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modals -->
+  <div class="modal" id="size-chart-modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('size-chart-modal')">&times;</span>
+      <h3>Size Chart</h3>
+      <table border="1" width="100%">
+        <tr><th>Size</th><th>Chest (in)</th><th>Length (in)</th></tr>
+        <tr><td>S</td><td>34–36</td><td>26</td></tr>
+        <tr><td>M</td><td>38–40</td><td>27</td></tr>
+        <tr><td>L</td><td>42–44</td><td>28</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="modal" id="compare-modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('compare-modal')">&times;</span>
+      <h3>Compare Colours</h3>
+      <div id="color-comparison" style="display: flex;"></div>
+    </div>
+  </div>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
